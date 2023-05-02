@@ -4,7 +4,7 @@ import request from '../Request'
 const Home = () => {
   return (
  <>
- <HomeImage id='1' fetchURL={request.requestImage}/>
+ <HomeImage/>
  </>
   )
 }
