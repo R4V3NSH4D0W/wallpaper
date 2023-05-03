@@ -15,7 +15,7 @@ const HomeImage = ({ searchResult }) => {
           setImage(response.data.hits);
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
 
