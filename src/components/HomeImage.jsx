@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import request from '../Request';
-
-const HomeImage = ({ searchResult }) => {
+const HomeImage = ({ searchResult, clickResult }) => {
   const [image, setImage] = useState([]);
 
   useEffect(() => {
     async function fetchImage() {
       try {
-        if (searchResult.length > 0) {
+        if (clickResult) {
+          setImage([]);
+          console.log(clickResult)
+          setImage(clickResult);
+          console.log(image)
+        } else if (searchResult.length > 0) {
           setImage(searchResult);
         } else {
           const response = await axios.get(request.requestImage);
           setImage(response.data.hits);
+          console.log(image)
+         
         }
       } catch (error) {
-        // console.log(error);
+        console.log(error);
       }
     }
 
     fetchImage();
-  }, [searchResult]);
+  }, [searchResult, clickResult]);
+ 
 
   return (
     <>

@@ -2,7 +2,7 @@ import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import request from '../Request'
 import HomeImage from './HomeImage'
 const Searchbar = () => {
     const [query,setQuery]=useState('')
@@ -13,14 +13,14 @@ const Searchbar = () => {
     const handelSubmit= async(event)=>{
       event.preventDefault();
       try{
-        const response = await axios(`https://pixabay.com/api/?key=35982279-0fdbef952c35b7c02a2d2c802&q=${query}&image_type=photo`)
+        const response = await axios(`https://pixabay.com/api/?key=${request.api_key}&q=${query}&image_type=photo`)
         setResult(response.data.hits)
       }catch(error){
         console.log(error)
       }
 
     }
-    // console.log(result)
+
 
   return (
     <>
